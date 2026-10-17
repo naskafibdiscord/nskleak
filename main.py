@@ -304,6 +304,12 @@ ytdl_format_options = {
     "default_search": "auto",
     "source_address": "0.0.0.0",
     "extract_flat": False,
+    # Contourne le blocage "Sign in to confirm you're not a bot" de YouTube
+    "extractor_args": {
+        "youtube": {
+            "player_client": ["android", "ios", "tv_embedded"],
+        }
+    },
 }
 
 ffmpeg_options = {

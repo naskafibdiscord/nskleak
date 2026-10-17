@@ -266,27 +266,31 @@ def has_config_permission(interaction: discord.Interaction) -> bool:
 
 # Playlist de titres qui plaisent aux ados (rap FR + hits d'été)
 # Utilise la recherche YouTube (ytsearch:)
+# Playlist SoundCloud (YouTube est souvent bloqué sur Railway)
 DEFAULT_PLAYLIST = [
-    "ytsearch1:Aya Nakamura Djadja",
-    "ytsearch1:Ninho Jefe",
-    "ytsearch1:Gazo Die",
-    "ytsearch1:Tiakola Méchant",
-    "ytsearch1:Werenoi Louvre",
-    "ytsearch1:SCH Manoir",
-    "ytsearch1:Jul Bandana SCH",
-    "ytsearch1:PNL Au DD",
-    "ytsearch1:Booba Validé",
-    "ytsearch1:Niska Méchant",
-    "ytsearch1:Aya Nakamura Pookie",
-    "ytsearch1:Gazo Drill FR",
-    "ytsearch1:Tiakola Manon",
-    "ytsearch1:Werenoi Solitaire",
-    "ytsearch1:Orelsan L'odeur de l'essence",
-    "ytsearch1:Damso Ipséité",
-    "ytsearch1:Ninho Tout en haut",
-    "ytsearch1:Aya Nakamura Copines",
-    "ytsearch1:Gazo Plateforme",
-    "ytsearch1:SCH A7",
+    "scsearch1:Aya Nakamura Djadja",
+    "scsearch1:Ninho Jefe",
+    "scsearch1:Gazo Die",
+    "scsearch1:Tiakola Méchant",
+    "scsearch1:Werenoi Louvre",
+    "scsearch1:SCH Manoir",
+    "scsearch1:Jul Bandana",
+    "scsearch1:PNL Au DD",
+    "scsearch1:Booba Validé",
+    "scsearch1:Niska Méchant",
+    "scsearch1:Aya Nakamura Pookie",
+    "scsearch1:Gazo Drill FR",
+    "scsearch1:Tiakola Manon",
+    "scsearch1:Werenoi Solitaire",
+    "scsearch1:Orelsan L'odeur de l'essence",
+    "scsearch1:Damso Ipséité",
+    "scsearch1:Ninho Tout en haut",
+    "scsearch1:Aya Nakamura Copines",
+    "scsearch1:Gazo Plateforme",
+    "scsearch1:SCH A7",
+    "scsearch1:rap français 2024",
+    "scsearch1:summer hits 2024",
+    "scsearch1:drill française",
 ]
 
 VOICE_CHANNEL_NAME = "🔊・Vocal 1"
@@ -297,17 +301,17 @@ ytdl_format_options = {
     "restrictfilenames": True,
     "noplaylist": True,
     "nocheckcertificate": True,
-    "ignoreerrors": False,
+    "ignoreerrors": True,  # passe au titre suivant si un échoue
     "logtostderr": False,
     "quiet": True,
     "no_warnings": True,
     "default_search": "auto",
     "source_address": "0.0.0.0",
     "extract_flat": False,
-    # Contourne le blocage "Sign in to confirm you're not a bot" de YouTube
     "extractor_args": {
         "youtube": {
-            "player_client": ["android", "ios", "tv_embedded"],
+            "player_client": ["android_sdkless", "android", "ios", "tv_embedded"],
+            "player_skip": ["webpage", "configs"],
         }
     },
 }
